@@ -1,0 +1,16 @@
+﻿@model ArnaudWeil2022.ViewModels.Home.ComputeProductViewModel
+
+@{
+    ViewBag.Title = "ComputeProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Product of two numbers</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.TextBoxFor(m => m.Number1)
+    @Html.TextBoxFor(m => m.Number2)
+    <input type="submit" value="Compute" />
+}
+<label>Result: @Html.DisplayFor(m => m.Result)</label>

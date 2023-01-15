@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron" style="margin-top:50px">
+    <h1>Welcome</h1>
+    <p class="lead"> Using ASP.NET MVC we created a wonderful application that allows buying your favorite products.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Discover ASP.NET &raquo;</a></p>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <h2>Startup</h2>
+        <p>New to the store? Give yourself a treat through the shop!</p>
+        <p>We can deliver the products to your door by @DateTime.Now.AddDays(1).ToLongDateString().</p>
+    </div>
+
+    <div class="col-md-8">
+
+        @using (Html.BeginForm())
+        {
+            @Html.TextBox("searchCriteria")
+            <input type="submit" value="Find products" />
+        }
+        <h2>Our products</h2>
+
+        <table id="table_prod_front" class="table-striped table-bordered table-responsive">
+
+            @foreach (var product in Model)
+            {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@Html.ActionLink("Details", "../Products/Details", new { id = product.ID })</td>
+                <td><img src='@Url.Action("Picture", new { id = product.ID })' /></td>
+            </tr> 
+            }
+        </table>
+    </div>
+
+</div>
